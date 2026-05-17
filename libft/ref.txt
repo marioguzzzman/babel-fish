@@ -1,0 +1,10 @@
+
+
+memcpy
+what are other tests I can do with this, 
+is it also nulled?
+
+memmove
+if both are empty we need to NULL
+https://marmota.medium.com/c-language-making-memmove-def8792bb8d5
+https://book-of-gehn.github.io/articles/2024/09/21/Behind-memcpy-memmove.html

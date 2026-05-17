@@ -22,7 +22,8 @@ SOURCES = ft_isalpha.c \
 	ft_strrchr.c \
 	ft_memchr.c \
 	ft_memcmp.c \
-	ft_strnstr.c
+	ft_strnstr.c \
+	ft_atoi.c
 
 BONUS_SOURCES = 
 # Add your *_bonus.c files here when you do the bonus part, e.g.:

@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_atoi.c                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/03/29 12:02:57 by maguzman          #+#    #+#             */
-/*   Updated: 2026/05/13 15:43:56 by maguzman         ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   ft_atoi.c                                         :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/03/29 12:02:57 by maguzman         #+#    #+#              */
+/*   Updated: 2026/05/17 19:59:52 by maguzman        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(char *str)
+int	ft_atoi(const char *str)
 {
 	int	i;
 	int	sign;
@@ -21,7 +21,7 @@ int	ft_atoi(char *str)
 	i = 0;
 	converted = 0;
 	sign = 1;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13)) 
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-' || str[i] == '+')
 	{
@@ -31,7 +31,7 @@ int	ft_atoi(char *str)
 		}
 		i++;
 	}
-	while (str[i] >= '0' && str [i] <= '9')
+	while (str[i] >= '0' && str[i] <= '9')
 	{
 		converted = converted * 10 + (str[i] - '0');
 		i++;
@@ -39,19 +39,19 @@ int	ft_atoi(char *str)
 	return (converted * sign);
 }
 
-int	main(void)
-{
-	char	*nb;
+// int	main(void)
+// {
+// 	char	*nb;
 
-	nb = " ---+--+1234ab567";
-	printf("%d\n", ft_atoi(nb));
-	nb = "-2147483647"; 
-	printf("%d\n", ft_atoi(nb));
-	nb = "0";
-	printf("%d\n", ft_atoi(nb));
-	nb = "10";
-	printf("%d\n", ft_atoi(nb));
-	nb = "2147483647";
-	printf("%d\n", ft_atoi(nb));
-	return (0);
-}
+// 	nb = " ---+--+1234ab567";
+// 	printf("%d\n", ft_atoi(nb));
+// 	nb = "-2147483647";
+// 	printf("%d\n", ft_atoi(nb));
+// 	nb = "0";
+// 	printf("%d\n", ft_atoi(nb));
+// 	nb = "10";
+// 	printf("%d\n", ft_atoi(nb));
+// 	nb = "2147483647";
+// 	printf("%d\n", ft_atoi(nb));
+// 	return (0);
+// }

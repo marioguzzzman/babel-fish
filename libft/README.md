@@ -2,18 +2,14 @@
 
 
 ## Description 
-section that clearly presents the project, including its goal and a
-brief overview.
+
 
 ### Functions Descriptions and notes
 
 #### Memmove
 if both are empty we need to NULL
-https://marmota.medium.com/c-language-making-memmove-def8792bb8d5
-https://book-of-gehn.github.io/articles/2024/09/21/Behind-memcpy-memmove.html
-
-section listing classic references related to the topic (documen￾tation, articles, tutorials, etc.), as well as a description of how AI was used —
-specifying for which tasks and which parts of the project.
+- https://marmota.medium.com/c-language-making-memmove-def8792bb8d5
+- https://book-of-gehn.github.io/articles/2024/09/21/Behind-memcpy-memmove.html
 
 ## Instructions
 
@@ -31,7 +27,7 @@ You can also test individual functions
 
 `bash grademe.sh ft_atoi`
 
-#### [libft-unit-test] (https://github.com/alelievr/libft-unit-test)
+#### [Libft Unit Test](https://github.com/alelievr/libft-unit-test)
 
 ## Resources
 

@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/03/29 12:02:57 by maguzman         #+#    #+#              */
-/*   Updated: 2026/05/17 19:59:52 by maguzman        ###   ########.fr        */
+/*   Updated: 2026/05/17 20:32:40 by maguzman        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,20 +38,3 @@ int	ft_atoi(const char *str)
 	}
 	return (converted * sign);
 }
-
-// int	main(void)
-// {
-// 	char	*nb;
-
-// 	nb = " ---+--+1234ab567";
-// 	printf("%d\n", ft_atoi(nb));
-// 	nb = "-2147483647";
-// 	printf("%d\n", ft_atoi(nb));
-// 	nb = "0";
-// 	printf("%d\n", ft_atoi(nb));
-// 	nb = "10";
-// 	printf("%d\n", ft_atoi(nb));
-// 	nb = "2147483647";
-// 	printf("%d\n", ft_atoi(nb));
-// 	return (0);
-// }

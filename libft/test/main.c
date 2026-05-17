@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/29 23:09:04 by maguzman         #+#    #+#              */
-/*   Updated: 2026/05/08 18:14:48 by maguzman        ###   ########.fr        */
+/*   Updated: 2026/05/17 20:33:18 by maguzman        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,18 @@ int	main(void)
 	printf("  | memcmp: %d\n", memcmp(str1mem, str2mem, 8));
 	printf("\n");
 	/* ********** LETTER ************* */
+	/* ********** ft_atoi ************* */
+	int	nb = " ---+--+1234ab567";
+
+	printf("%d\n", ft_atoi(nb));
+	nb = "-2147483647";
+	printf("%d\n", ft_atoi(nb));
+	nb = "0";
+	printf("%d\n", ft_atoi(nb));
+	nb = "10";
+	printf("%d\n", ft_atoi(nb));
+	nb = "2147483647";
+	printf("%d\n", ft_atoi(nb));
 	/* ********** ft_tolower / ft_toupper ************* */
 	char	strLU[] = "1hEllo";
 

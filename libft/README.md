@@ -27,6 +27,12 @@ Go to the directory where you cloned, add the correct Path in the config.sh file
 
 `bash grademe.sh`
 
+You can also test individual functions
+
+`bash grademe.sh ft_atoi`
+
+#### [libft-unit-test] (https://github.com/alelievr/libft-unit-test)
+
 ## Resources
 
 - Friendly repos: https://github.com/aiamlucas/c-the-universe-and-everything

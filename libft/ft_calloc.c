@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/19 11:55:03 by maguzman         #+#    #+#              */
-/*   Updated: 2026/05/19 16:00:26 by maguzman        ###   ########.fr        */
+/*   Updated: 2026/05/19 16:16:15 by maguzman        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	*ft_calloc(size_t nmemb, size_t size)
 	void	*ptr;
 
 	if (nmemb == 0 || size == 0)
-		return (NULL);
+		return (malloc(0));
 	if (SIZE_MAX / size < nmemb)
 		return (NULL);
 	ptr = malloc(nmemb * size);
@@ -33,5 +33,6 @@ void	*ft_calloc(size_t nmemb, size_t size)
 ** @size: size of each element
 ** Returns a pointer to zeroed memory, or NULL if overflow or malloc fails
 ** Note: Check for overflow BEFORE allocating to prevent silent errors.
-** Note: Returning NULL as a decision to handle when nmemb or size is 0
+** Note: If nmemb or size is 0, then calloc() returns a unique pointer value
+** that can be successfully passed to free().
 */

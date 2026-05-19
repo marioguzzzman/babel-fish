@@ -3,8 +3,15 @@
 
 ## Description 
 
+Create a C library from scratch, containing 43 functions programmed for manipulating strings, memory and lists.
 
-### Functions Descriptions and notes
+libc fubctions: reimplement 23 functions from libc (with their prototypes and matching behaviour as defined in man page).
+
+Additional functions: develop 11 functions that are either not in libc or behave a little differently from the standard function.
+
+Linked list: Set of 9 functions for list manipulation
+
+### N       otes
 
 #### Memmove
 if both are empty we need to NULL
@@ -31,4 +38,7 @@ You can also test individual functions
 
 ## Resources
 
-- Friendly repos: https://github.com/aiamlucas/c-the-universe-and-everything
+Friendly repos: 
+
+- https://github.com/aiamlucas/c-the-universe-and-everything
+- https://github.com/vineetme/libft_docs

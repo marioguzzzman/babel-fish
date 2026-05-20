@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/29 22:16:44 by maguzman         #+#    #+#              */
-/*   Updated: 2026/05/20 18:43:07 by maguzman        ###   ########.fr        */
+/*   Updated: 2026/05/20 18:51:55 by maguzman        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,6 @@ char	*ft_strtrim(char const *s1, char const *set);
 void	ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
+void	ft_putnbr_fd(int n, int fd);
 
 #endif

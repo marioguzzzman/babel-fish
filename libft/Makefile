@@ -1,5 +1,5 @@
 SHELL = /bin/sh
-CC = gcc
+CC = cc
 CFLAGS = -g -Wall -Werror -Wextra -I.
 NAME = libft.a
 
@@ -26,7 +26,8 @@ SOURCES = ft_isalpha.c \
 	ft_atoi.c \
 	ft_calloc.c \
 	ft_strdup.c \
-	ft_substr.c 
+	ft_substr.c \
+	ft_strjoin.c
 
 BONUS_SOURCES = 
 # Add your *_bonus.c files here when you do the bonus part, e.g.:

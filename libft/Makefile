@@ -33,7 +33,8 @@ SOURCES = ft_isalpha.c \
 	ft_putstr_fd.c \
 	ft_putendl_fd.c \
 	ft_putnbr_fd.c \
-	ft_lstnew.c
+	ft_lstnew.c \
+	ft_lstadd_front.c
 
 BONUS_SOURCES = 
 # Add your *_bonus.c files here when you do the bonus part, e.g.:

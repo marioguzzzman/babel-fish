@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/29 23:09:04 by maguzman         #+#    #+#              */
-/*   Updated: 2026/05/23 03:01:47 by maguzman        ###   ########.fr        */
+/*   Updated: 2026/05/23 21:24:02 by maguzman        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,9 +178,12 @@ int	main(void)
 	char	str2[] = "0123456789";
 	char	str3[] = "0123456789";
 	/* ******************************* */
+
+	printf("ft_itoa: %s\n", ft_itoa(42));
+	printf("ft_itoa: %s\n", ft_itoa(-42));
+	printf("ft_itoa: %s\n", ft_itoa(0));
 	/* ********** STRING ************* */
 	/* ********** ft_strchr ************* */
-
 	printf("\n");
 	printf("Str: %s\n", str);
 	printf("ft_strchr: %s\n", (char *) ft_strchr(str, 'l'));

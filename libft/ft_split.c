@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/22 14:34:33 by maguzman          #+#    #+#             */
-/*   Updated: 2026/05/23 02:50:34 by maguzman         ###   ########.fr       */
+/*   Updated: 2026/05/23 03:01:47 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,15 +32,23 @@ static int	count_words(char const *s, char c)
 {
 	int	i;
 	int	word_count;
+	int	in_word;
 
 	i = 0;
 	word_count = 0;
-	if (s[i] != c && s[i] != '\0')
-		word_count++;
+	in_word = 0;
 	while (s[i] != '\0')
 	{
-		if (s[i - 1] == c && s[i] != c)
-			word_count++;
+		if (s[i] != c)
+		{
+			if (in_word == 0)
+			{
+				word_count++;
+				in_word = 1;
+			}
+		}
+		else
+			in_word = 0;
 		i++;
 	}
 	return (word_count);

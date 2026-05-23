@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/29 23:09:04 by maguzman         #+#    #+#              */
-/*   Updated: 2026/05/17 20:33:18 by maguzman        ###   ########.fr        */
+/*   Updated: 2026/05/23 03:01:47 by maguzman        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <bsd/string.h>
+#include <limits.h>
+#include <stdint.h>
 
 void	OK(char *name)
 {
@@ -26,6 +28,108 @@ void	OK(char *name)
 
 void	test_ft_memchr(void)
 {
+}
+
+// Helper: count words in resulting array
+
+static int	count_array_elements(char **array)
+{
+	int	i;
+
+	i = 0;
+	if (array == NULL)
+		return (-1);
+	while (array[i] != NULL)
+		i++;
+	return (i);
+}
+
+// Helper: free the array
+
+static void	free_split(char **array)
+{
+	int	i;
+
+	if (array == NULL)
+		return ;
+	i = 0;
+	while (array[i] != NULL)
+	{
+		free(array[i]);
+		i++;
+	}
+	free(array);
+}
+
+// Test function
+
+void	test_ft_split(void)
+{
+	char	**result;
+
+	// Test 1: Normal split
+	result = ft_split("hello world test", ' ');
+	assert(count_array_elements(result) == 3);
+	assert(strcmp(result[0], "hello") == 0);
+	assert(strcmp(result[1], "world") == 0);
+	assert(strcmp(result[2], "test") == 0);
+	free_split(result);
+	OK("ft_split - normal");
+	// Test 2: Multiple consecutive delimiters
+	result = ft_split("a::b::c", ':');
+	assert(count_array_elements(result) == 3);
+	assert(strcmp(result[0], "a") == 0);
+	assert(strcmp(result[1], "b") == 0);
+	assert(strcmp(result[2], "c") == 0);
+	free_split(result);
+	OK("ft_split - multiple consecutive delimiters");
+	// Test 3: Single word
+	result = ft_split("hello", ' ');
+	assert(count_array_elements(result) == 1);
+	assert(strcmp(result[0], "hello") == 0);
+	free_split(result);
+	OK("ft_split - single word");
+	// Test 4: Empty string
+	result = ft_split("", ' ');
+	assert(count_array_elements(result) == 0);
+	free_split(result);
+	OK("ft_split - empty string");
+	// Test 5: String starting with delimiter
+	result = ft_split(" hello", ' ');
+	assert(count_array_elements(result) == 1);
+	assert(strcmp(result[0], "hello") == 0);
+	free_split(result);
+	OK("ft_split - starting with delimiter");
+	// Test 6: String ending with delimiter
+	result = ft_split("hello ", ' ');
+	assert(count_array_elements(result) == 1);
+	assert(strcmp(result[0], "hello") == 0);
+	free_split(result);
+	OK("ft_split - ending with delimiter");
+	// Test 7: String with leading and trailing delimiters
+	result = ft_split(" hello world ", ' ');
+	assert(count_array_elements(result) == 2);
+	assert(strcmp(result[0], "hello") == 0);
+	assert(strcmp(result[1], "world") == 0);
+	free_split(result);
+	OK("ft_split - leading and trailing delimiters");
+	// Test 8: Only delimiters
+	result = ft_split("   ", ' ');
+	assert(count_array_elements(result) == 0);
+	free_split(result);
+	OK("ft_split - only delimiters");
+	// Test 9: Delimiter not found
+	result = ft_split("hello", 'x');
+	assert(count_array_elements(result) == 1);
+	assert(strcmp(result[0], "hello") == 0);
+	free_split(result);
+	OK("ft_split - delimiter not found");
+	// Test 10: Single character
+	result = ft_split("a", ' ');
+	assert(count_array_elements(result) == 1);
+	assert(strcmp(result[0], "a") == 0);
+	free_split(result);
+	OK("ft_split - single character");
 }
 
 /* ********** SIMPLE ************* */
@@ -160,17 +264,17 @@ int	main(void)
 	printf("\n");
 	/* ********** LETTER ************* */
 	/* ********** ft_atoi ************* */
-	int	nb = " ---+--+1234ab567";
+	const char	*nb_str = " ---+--+1234ab567";
 
-	printf("%d\n", ft_atoi(nb));
-	nb = "-2147483647";
-	printf("%d\n", ft_atoi(nb));
-	nb = "0";
-	printf("%d\n", ft_atoi(nb));
-	nb = "10";
-	printf("%d\n", ft_atoi(nb));
-	nb = "2147483647";
-	printf("%d\n", ft_atoi(nb));
+	printf("%d\n", ft_atoi(nb_str));
+	nb_str = "-2147483647";
+	printf("%d\n", ft_atoi(nb_str));
+	nb_str = "0";
+	printf("%d\n", ft_atoi(nb_str));
+	nb_str = "10";
+	printf("%d\n", ft_atoi(nb_str));
+	nb_str = "2147483647";
+	printf("%d\n", ft_atoi(nb_str));
 	/* ********** ft_tolower / ft_toupper ************* */
 	char	strLU[] = "1hEllo";
 
@@ -192,5 +296,7 @@ int	main(void)
 	test_ft_isalnum();
 	/* ********** MEMORY  ************* */
 	test_ft_memchr();
+	/* ********** STRING SPLIT ************* */
+	test_ft_split();
 	return (0);
 }

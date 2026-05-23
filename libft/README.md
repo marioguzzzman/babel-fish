@@ -56,6 +56,10 @@ if both are empty we need to NULL
 - https://marmota.medium.com/c-language-making-memmove-def8792bb8d5
 - https://book-of-gehn.github.io/articles/2024/09/21/Behind-memcpy-memmove.html
 
+#### Split
+
+##### 2D array
+- [Dinamically allocate a 2D array](https://www.youtube.com/watch?v=ZLc_OpzND2c)
 
 Link Lists:
 - [Introduction to Link Lists](https://www.youtube.com/watch?v=MCIwn7mY4jY)

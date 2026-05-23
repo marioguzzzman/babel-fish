@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/12 20:04:38 by maguzman          #+#    #+#             */
-/*   Updated: 2026/05/13 15:42:20 by maguzman         ###   ########.fr       */
+/*   Updated: 2026/05/23 22:49:13 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 
 	i = 0;
 	if (!little[0])
-		return ((char *)big);
+		return ((char *) big);
 	while (big[i])
 	{
 		j = 0;
@@ -27,7 +27,7 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		{
 			j++;
 			if (little[j] == '\0')
-				return ((char *)&big[i]);
+				return ((char *) & big[i]);
 		}
 		i++;
 	}

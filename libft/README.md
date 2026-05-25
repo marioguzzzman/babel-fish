@@ -13,8 +13,58 @@ Linked list: Set of 9 functions for list manipulation
 
 ### Notes
 
+#### Section 1 - Building blocks
 
-#### Link List 
+The functions in this sections inspects and moves raw data. 
+
+##### Character Inspectors
+
+- isalpha, isdigit, isalnum - checks for letters, numbers, or both
+- isascii, isprint - checks if a character is valid ASCII or printable
+- toupper, tolower - transform case
+
+###### Memory Movers (copy data from A to B)
+
+- memset - fill a memory block with a single byte value
+- bzero - clear memory (set everything to 0)
+- memcpy - copy bytes, but assume no overlap
+- memmove - copy bytes, handles overlapping memory safely
+
+###### Search and Compare (find things, measure difference)
+
+- strchr, strrchr - find a character in a string (forward/reverse)
+- strncmp, memcmp - compare bytes/strings.
+    - memcmp tells which one comes first. (-) is smaller, (+) if larger
+- memchr - find a byte in memory, returns the address
+- strnstr - find a substring
+
+##### Type Converter
+
+- atoi - string to integer
+- itoa - integer to string
+
+#### Section 2 - builders and transformers
+
+The functions in this sections create new strings throught transformation and writing data. Combine, reshape and display.
+
+##### Memory Allocators (create something new)
+
+- substr - extract a piece of a string, return it as a new string
+- strjoin - connect two strings together into a new string
+- strtrim - remove characters off the edges of a string
+- split - split a tring into multiple strings by a delimiter.
+
+##### Function Appliers (transform each character)
+
+- strmapi - apply a function to every character, build a new string from results
+- striteri - apply a function to every character, modify them in place
+
+##### Output Writers (send data somewhere)
+
+- putchar_fd, putstr_fd, putendl_fd, putnbr_fd - write to a file descriptor (character, string, string+newline, number)
+
+#### Section 3 -Link List 
+
 Data structures and elements linking each other.
 We need a strcuture to hold data and then dinamically allocate memory for each block and then link them. 
 
@@ -61,10 +111,10 @@ if both are empty we need to NULL
 ##### 2D array
 - [Dinamically allocate a 2D array](https://www.youtube.com/watch?v=ZLc_OpzND2c)
 
-Link Lists:
+#### Link Lists:
 - [Introduction to Link Lists](https://www.youtube.com/watch?v=MCIwn7mY4jY)
 
-Friendly repos: 
+## Friendly repos: 
 
 - https://github.com/aiamlucas/c-the-universe-and-everything
 - https://github.com/vineetme/libft_docs

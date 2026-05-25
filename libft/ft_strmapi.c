@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/24 23:31:10 by maguzman          #+#    #+#             */
-/*   Updated: 2026/05/25 12:46:36 by maguzman         ###   ########.fr       */
+/*   Updated: 2026/05/25 12:57:54 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	size_t			len;
 
 	i = 0;
-	if (s == NULL)
+	if (s == NULL || f == NULL)
 		return (NULL);
 	len = ft_strlen(s);
 	s2 = malloc(len + 1);

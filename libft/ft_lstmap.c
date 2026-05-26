@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/26 15:16:14 by maguzman          #+#    #+#             */
-/*   Updated: 2026/05/26 16:48:36 by maguzman         ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   ft_lstmap.c                                       :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/05/26 15:16:14 by maguzman         #+#    #+#              */
+/*   Updated: 2026/05/26 18:49:32 by maguzman        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
+t_list	*ft_lstmap(t_list *lst, void * (*f)(void *), void (*del)(void *))
 {
 	t_list	*result;
 	t_list	*newnode;
+	void	*new_content;
 
 	result = NULL;
 	if (lst == NULL || f == NULL)
 		return (NULL);
 	while (lst)
 	{
-		newnode = ft_lstnew(f(lst->content));
+		new_content = f(lst->content);
+		newnode = ft_lstnew(new_content);
 		if (newnode == NULL)
 		{
 			ft_lstclear(&result, del);
+			free(new_content);
 			return (NULL);
 		}
 		ft_lstadd_back(&result, newnode);

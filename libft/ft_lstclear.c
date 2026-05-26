@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/05/25 16:51:48 by maguzman          #+#    #+#             */
-/*   Updated: 2026/05/25 17:35:05 by maguzman         ###   ########.fr       */
+/*   Updated: 2026/05/26 14:24:56 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,16 +17,16 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	t_list	*buffer;
 	t_list	*current;
 
-	if (lst == NULL)
+	if (lst == NULL || del == NULL)
 		return ;
 	current = *lst;
-	buffer = current->next;
-	while (current->next != NULL)
+	while (current != NULL)
 	{
-		*buffer = current->next;
-		ft_lstdelone(current);
-		current++;
+		buffer = current->next;
+		ft_lstdelone(current, del);
+		current = buffer;
 	}
+	*lst = NULL;
 }
 
 /*

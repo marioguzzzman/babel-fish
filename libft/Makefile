@@ -1,6 +1,6 @@
 SHELL = /bin/sh
 CC = cc
-CFLAGS = -g -Wall -Werror -Wextra -I.
+CFLAGS = -Wall -Werror -Wextra -I.
 NAME = libft.a
 
 SOURCES = ft_isalpha.c \

@@ -71,7 +71,7 @@ so:
 test: all
 	$(CC) $(CFLAGS) test_libft.c -L. -lbsd -lft -I. -o test_libft
 	./demo
-	@echo .o object files and .a archive files created. Demo is running.
+	@echo .o object files and .a archive files created. test_libft is running.
 
 clean:
 	@rm -f $(OBJECTS) $(BONUS_OBJECTS)

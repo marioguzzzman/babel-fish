@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/22 14:34:33 by maguzman         #+#    #+#              */
-/*   Updated: 2026/05/26 17:57:09 by maguzman        ###   ########.fr        */
+/*   Updated: 2026/05/26 18:23:39 by maguzman        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,19 @@ static void	free_array(char **array)
 	}
 }
 
+static int	add_word(char const *s, char c, int *i)
+{
+	int	len;
+
+	len = 0;
+	while (s[*i] != c && s[*i] != '\0')
+	{
+		len++;
+		(*i)++;
+	}
+	return (len);
+}
+
 static int	get_words(char const *s, char c, char **array)
 {
 	int	i;
@@ -86,12 +99,7 @@ static int	get_words(char const *s, char c, char **array)
 		if (s[i] != c)
 		{
 			start = i;
-			len = 0;
-			while (s[i] != c && s[i] != '\0')
-			{
-				len++;
-				i++;
-			}
+			len = add_word(s, c, &i);
 			array[j++] = ft_substr(s, start, len);
 			if (array[j - 1] == NULL)
 			{

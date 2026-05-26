@@ -147,11 +147,14 @@ static void	test_memcpy(void)
 
 static void	test_memmove(void)
 {
-	char	buf[] = "memmove can be very useful.";
+	char	buf[40] = "memmove can be very useful.";
+	char	ref[40] = "memmove can be very useful.";
 
 	ft_memmove(buf + 20, buf + 15, 11);
-	check("ft_memmove", "overlapping copy",
-		memcmp(buf, "memmove can be very very useful", 31) == 0);
+	memmove(ref + 20, ref + 15, 11);
+	check("ft_memmove", "overlapping copy", memcmp(buf, ref, 40) == 0);
+	ft_memmove(buf, buf, 5);
+	check("ft_memmove", "src == dest no-op", memcmp(buf, ref, 40) == 0);
 }
 
 static void	test_strlcpy(void)

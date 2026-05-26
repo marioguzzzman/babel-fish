@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/05 16:27:23 by maguzman          #+#    #+#             */
-/*   Updated: 2026/05/20 12:16:16 by maguzman         ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   ft_strlcpy.c                                      :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/05/05 16:27:23 by maguzman         #+#    #+#              */
+/*   Updated: 2026/05/26 21:14:24 by maguzman        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 
 	i = 0;
 	slen = ft_strlen(src);
-	if (size == 0)
+	if (size == 0 || dstsize == 0)
 		return (slen);
 	while (src[i] != '\0' && i < size - 1)
 	{

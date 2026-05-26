@@ -151,7 +151,7 @@ static void	test_memmove(void)
 
 	ft_memmove(buf + 20, buf + 15, 11);
 	check("ft_memmove", "overlapping copy",
-		memcmp(buf + 20, "very useful.", 12) == 0);
+		memcmp(buf, "memmove can be very very useful", 31) == 0);
 }
 
 static void	test_strlcpy(void)

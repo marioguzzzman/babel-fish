@@ -69,7 +69,7 @@ so:
 	$(CC) -nostartfiles -shared -o libft.so $(OBJECTS) $(BONUS_OBJECTS)
 
 test: all
-	$(CC) $(CFLAGS) test/main.c -L. -lbsd -lft -I. -o demo
+	$(CC) $(CFLAGS) test_libft.c -L. -lbsd -lft -I. -o test_libft
 	./demo
 	@echo .o object files and .a archive files created. Demo is running.
 

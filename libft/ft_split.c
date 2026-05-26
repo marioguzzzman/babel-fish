@@ -6,26 +6,29 @@
 /*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/05/22 14:34:33 by maguzman         #+#    #+#              */
-/*   Updated: 2026/05/26 18:23:39 by maguzman        ###   ########.fr        */
+/*   Updated: 2026/05/26 18:37:02 by maguzman        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static int	count_words(char const *s, char c);
-static void	get_words(char const *s, char c, char **array);
+static int	get_words(char const *s, char c, char **array);
 static void	free_array(char **array);
+static int	add_word(char const *s, char c, int *i);
 
 char	**ft_split(char const *s, char c)
 {
 	char	**array;
+	int		get_word_check;
 
 	if (s == NULL)
 		return (NULL);
 	array = malloc(sizeof(char *) * (count_words(s, c) + 1));
 	if (array == NULL)
 		return (NULL);
-	if (get_words(s, c, array) == 1)
+	get_word_check = get_words(s, c, array);
+	if (get_word_check == 1)
 	{
 		free(array);
 		return (NULL);

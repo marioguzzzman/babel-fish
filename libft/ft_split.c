@@ -128,23 +128,5 @@ The array of pointers itself is also allocated
 dynamically.
 The returned array must be NULL terminated.
 
-PARAMETERS
-s: The string to be split.
-c: The delimiter character.
-
-RETURN VALUES
-The array of new strings resulting from the split.
-NULL if any allocation fails.
-The returned structure will be released using: 1)
-free() on each string in the array; 2) free() the
-array itself.
-
-NOTES
-// 2D pointer to a pointer to an int
-**array = malloc(sizeof(int *) * n_array);
-//Syntax for introducing the 5 into the first element of the first array
-array[0][0] = 5;
-
-//is it more costly to allocate this on the heap, than a 1D on the stack
-
+PARAMET
 */

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/05/22 14:34:33 by maguzman          #+#    #+#             */
-/*   Updated: 2026/05/23 03:01:47 by maguzman         ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   ft_split.c                                        :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/05/22 14:34:33 by maguzman         #+#    #+#              */
+/*   Updated: 2026/05/26 17:57:09 by maguzman        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 
 static int	count_words(char const *s, char c);
 static void	get_words(char const *s, char c, char **array);
+static void	free_array(char **array);
 
 char	**ft_split(char const *s, char c)
 {
@@ -24,8 +25,13 @@ char	**ft_split(char const *s, char c)
 	array = malloc(sizeof(char *) * (count_words(s, c) + 1));
 	if (array == NULL)
 		return (NULL);
-	get_words(s, c, array);
-	return (array);
+	if (get_words(s, c, array) == 1)
+	{
+		free(array);
+		return (NULL);
+	}
+	else
+		return (array);
 }
 
 static int	count_words(char const *s, char c)
@@ -54,7 +60,19 @@ static int	count_words(char const *s, char c)
 	return (word_count);
 }
 
-static void	get_words(char const *s, char c, char **array)
+static void	free_array(char **array)
+{
+	int	j;
+
+	j = 0;
+	while (array[j] != NULL)
+	{
+		free(array[j]);
+		j++;
+	}
+}
+
+static int	get_words(char const *s, char c, char **array)
 {
 	int	i;
 	int	j;
@@ -75,11 +93,17 @@ static void	get_words(char const *s, char c, char **array)
 				i++;
 			}
 			array[j++] = ft_substr(s, start, len);
+			if (array[j - 1] == NULL)
+			{
+				free_array(array);
+				return (1);
+			}
 		}
 		else
 			i++;
 	}
 	array[j] = NULL;
+	return (0);
 }
 
 /*

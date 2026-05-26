@@ -3,13 +3,31 @@
 
 ## Description 
 
-Create a C library from scratch, containing 43 functions programmed for manipulating strings, memory and lists.
+Create a C library containing 43 functions programmed for manipulating strings, memory and lists.
 
 libc fubctions: reimplement 23 functions from libc (with their prototypes and matching behaviour as defined in man page).
 
-Additional functions: develop 11 functions that are either not in libc or behave a little differently from the standard function.
+Additional functions: develop 11 functions that are either not in libc or behave differently from the standard function.
 
-Linked list: Set of 9 functions for list manipulation
+Linked list: Set of 9 functions for list manipulation.
+
+## Instructions
+
+### Running tests
+
+### Running external tests
+
+#### [War Machine](https://github.com/0x050f/libft-war-machine)
+
+Go to the directory where you cloned, add the correct Path in the config.sh file and run the script
+
+`bash grademe.sh`
+
+You can also test individual functions
+
+`bash grademe.sh ft_atoi`
+
+#### [Libft Unit Test](https://github.com/alelievr/libft-unit-test)
 
 ### Notes
 
@@ -81,23 +99,16 @@ They do not have an index, but each of them contain an address to where the next
 
 Inserting a node is easy as it takes the previous address and then points to the next one. But searching is mucho longer. 
 
-## Instructions
 
-### Running tests
 
-### Running external tests
+#### Makefile
 
-#### [War Machine](https://github.com/0x050f/libft-war-machine)
+`ar`
+The GNU ar program creates, modifies, and extracts from archives.  An archive is a single file holding a collection of other files in a structure that makes it possible to retrieve the original individual files (called members of the archive).
+`r` - inserts/replaces object files into the archive.
+`c` - create the archive.
+`s` - write an index (symbol table) into the archive, making linking faster. 
 
-Go to the directory where you cloned, add the correct Path in the config.sh file and run the script
-
-`bash grademe.sh`
-
-You can also test individual functions
-
-`bash grademe.sh ft_atoi`
-
-#### [Libft Unit Test](https://github.com/alelievr/libft-unit-test)
 
 ## Resources
 
@@ -114,7 +125,12 @@ if both are empty we need to NULL
 #### Link Lists:
 - [Introduction to Link Lists](https://www.youtube.com/watch?v=MCIwn7mY4jY)
 
+#### AI
+- AI was used in this project as a Socratic teacher dealing with examples to better understand some concepts and to ask questions to clarify my own thinking. 
+
 ## Friendly repos: 
 
 - https://github.com/aiamlucas/c-the-universe-and-everything
 - https://github.com/vineetme/libft_docs
+
+

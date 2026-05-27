@@ -3,10 +3,10 @@
 /*                                                       :::      ::::::::    */
 /*   ft_bzero.c                                        :+:      :+:    :+:    */
 /*                                                   +:+ +:+         +:+      */
-/*   By: maguzman <maguzman@student.42.fr>    #+#  +:+       +#+         */
+/*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/04/30 18:45:08 by maguzman         #+#    #+#              */
-/*   Updated: 2026/04/30 18:56:56 by maguzman        ###   ########.fr        */
+/*   Updated: 2026/05/27 10:07:52 by maguzman        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,12 @@
 
 void	ft_bzero(void *str, size_t n)
 {
-	int				i;
 	unsigned char	*s;
 
 	s = (unsigned char *) str;
-	i = 0;
 	while (n > 0)
 	{
-		s[i] = '\0';
-		i++;
 		n--;
+		s[i] = '\0';
 	}
 }

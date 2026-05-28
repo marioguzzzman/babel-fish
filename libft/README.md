@@ -15,9 +15,24 @@ Linked list: Set of 9 functions for list manipulation.
 
 ### Running tests
 
+### Running internal tests
+
+There is a tests folder outside of libft
+
+use this command to run it:
+
+`cd tests && gcc babel_tests.c ../libft/ft_*.c -I../libft -lbsd -o babel_tests && ./babel_tests`
+
+
 ### Running external tests
 
 #### [War Machine](https://github.com/0x050f/libft-war-machine)
+
+First build the library from the libft folder:
+
+`cd libft && make`
+
+Then go to the war machine directory, set the path to your libft folder in `config.sh`, and run the script:
 
 Go to the directory where you cloned, add the correct Path in the config.sh file and run the script
 

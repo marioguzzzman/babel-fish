@@ -49,6 +49,9 @@ SOURCES = ft_isalpha.c \
 
 OBJECTS = $(SOURCES:.c=.o)
 
+%.o: %.c libft.h
+	cc $(SOURCES) -c $<
+
 all: $(NAME)
 
 $(NAME): $(OBJECTS)

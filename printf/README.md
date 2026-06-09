@@ -21,7 +21,35 @@ You have to implement the following conversions:
 • %X Prints a number in hexadecimal (base 16) uppercase format.
 • %% Prints a percent sign.
 
+## man 3 printf
 
+The functions in the printf() family produce output according to a format as described below.
+
+All of these functions write the output under the control of a format string that specifies how subsequent arguments  (or  arguments  accessed  via the variable-length argument facilities of stdarg(3)) are converted for output.
+
+Agument list of the desired argument, indexed starting from 1.  Thus,
+
+           printf("%*d", width, num);
+
+       and
+
+           printf("%2$*1$d", width, num);
+
+are equivalent.  The second style allows repeated references to the same argument.  The C99 standard does  not include  the style using '$', which comes from the Single UNIX Specification.  If the style using '$' is used, it must be used throughout for all conversions taking an argument and all width and precision  arguments,  but it  may  be mixed with "%%" formats, which do not consume an argument.  There may be no gaps in the numbers of arguments specified using '$'; for example, if arguments 1 and 3 are specified, argument 2 must also be specified somewhere in the format string.
+
+For  some  numeric  conversions  a radix character ("decimal point") or thousands' grouping character is used. The actual character used depends on the LC_NUMERIC part of the locale.  (See setlocale(3).)  The POSIX locale uses '.' as radix character, and does not have a grouping character.  Thus,
+
+           printf("%'.2f", 1234567.89);
+
+results in "1234567.89" in the POSIX locale, in "1234567,89" in the nl_NL locale, and in "1.234.567,89" in the da_DK locale.
+
+
+RETURN VALUE
+Upon successful return, these functions return the number of characters printed (excluding the null byte used to end output to strings).
+
+If the output was truncated due to this limit, then the return value is the number  of  characters  (excluding  the terminating null byte) which would have been written to the final string if enough space had been available.  Thus, a return value of size or more means that the output was truncated.  
+
+If an output error is encountered, a negative value is returned.
 
 # Instructions
 
@@ -35,6 +63,8 @@ Useful walkthoight of the logic behind the project
 # include <stdio.h> 
 To use printf
 # include <unistd.h>
-To use write function, malloc and free
+To use write function 
+# include <stdlib.h>
+To use malloc and free
 # include <stdarg.h>
 

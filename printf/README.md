@@ -51,6 +51,16 @@ If the output was truncated due to this limit, then the return value is the numb
 
 If an output error is encountered, a negative value is returned.
 
+## Variadic function macros
+
+1. va_list ap; // argument pointer object that points to the first argument which is the *format
+2. va_start(ap, format); // ap is now point to the real first argument 
+3. va_end(ap); // frees the object created
+
+## Type promotion
+Automatic conversion of a lower-ranking data type to a higher-ranking data type when an operation involving multiple data types is being performed. For example when an integer and a floar are added, the integer gets promoted to float. Also happends when arguments are passed to functions. 
+
+
 # Instructions
 
 # Resources

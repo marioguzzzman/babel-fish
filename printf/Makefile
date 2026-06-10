@@ -3,7 +3,8 @@ CC = cc
 CFLAGS = -Wall -Werror -Wextra -I.
 NAME = libft.a
 
-SOURCES = ft_isalpha.c \ 
+SOURCES = ft_printf.c \ 
+ft_putchar.c
 
 OBJECTS = $(SOURCES:.c=.o)
 

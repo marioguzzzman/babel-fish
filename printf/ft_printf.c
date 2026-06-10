@@ -6,17 +6,11 @@
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 16:56:21 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/10 23:15:52 by maguzman         ###   ########.fr       */
+/*   Updated: 2026/06/10 23:24:54 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	ft_putchar(char c)
-{
-	write(1, &c, 1);
-	return (1);
-}
 
 int	ft_putstr(char *str)
 {

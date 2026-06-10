@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 16:56:21 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/10 21:11:33 by maguzman         ###   ########.fr       */
+/*   Updated: 2026/06/10 23:15:52 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_selector(char specifier, va_list ap)
 
 	count = 0;
 	if (specifier == 'c')
-		count += ft_putchar(va_arg(ap, int));
+		count += ft_putchar((char) va_arg(ap, int));
 	else if (specifier == 's')
 		count += ft_putstr(va_arg(ap, char *));
 	else if (specifier == 'd')
@@ -59,6 +59,8 @@ int	ft_printf(const char *format, ...)
 	va_list ap;
 	int	count;
 
+	if (!format)
+		return (-1);
 	va_start(ap, format);
 	count = 0;
 	while (*format != '\0')

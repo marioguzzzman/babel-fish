@@ -1,22 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/09 16:56:21 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/10 23:24:54 by maguzman         ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   ft_printf.c                                       :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/06/09 16:56:21 by maguzman         #+#    #+#              */
+/*   Updated: 2026/06/12 12:41:47 by maguzman        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	ft_putstr(char *str)
-{
-	write(1, &str, 1);
-	return (1);
-}
 
 int	ft_putnbr(int d, int base)
 {
@@ -74,9 +68,10 @@ int	main(void)
 {
 	int	count;
 
-	count = ft_printf("hello %s\n", "john");
+	count = ft_printf("hello %s\n", "dull boy");
+	ft_printf("str test: %s\n", "dull boy");
 	ft_printf("the test: %d\n", count);
-	ft_printf("the test: %c\n", 'j');
-	printf("hello %s\n", "john");
+	ft_printf("char test: %c\n", 'd');
+	printf("hello %s\n", "dull boy");
 	return (0);
 }

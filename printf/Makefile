@@ -1,10 +1,11 @@
 SHELL = /bin/sh
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -I.
-NAME = libft.a
+NAME = ft_printf.a
 
 SOURCES = ft_printf.c \ 
-ft_putchar.c
+ft_putchar.c \ 
+ft_putstr.c
 
 OBJECTS = $(SOURCES:.c=.o)
 

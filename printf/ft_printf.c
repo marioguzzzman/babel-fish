@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   ft_printf.c                                       :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/06/09 16:56:21 by maguzman         #+#    #+#              */
-/*   Updated: 2026/06/12 12:41:47 by maguzman        ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/09 16:56:21 by maguzman          #+#    #+#             */
+/*   Updated: 2026/06/12 22:18:08 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,17 @@
 
 int	ft_putnbr(int d, int base)
 {
-	write(1, &d, 1);
+	(void)d;
+	(void)base;
+	write(1, "d", 1);
 	return (1);
 }
 
 int	ft_putunsigned(int d, int base)
 {
-	write(1, &d, 1);
+	(void)d;
+	(void)base;
+	write(1, "u", 1);
 	return (1);
 }
 
@@ -64,14 +68,16 @@ int	ft_printf(const char *format, ...)
 	return (count);
 }
 
+/*
 int	main(void)
 {
-	int	count;
+int	count;
 
-	count = ft_printf("hello %s\n", "dull boy");
-	ft_printf("str test: %s\n", "dull boy");
-	ft_printf("the test: %d\n", count);
-	ft_printf("char test: %c\n", 'd');
-	printf("hello %s\n", "dull boy");
-	return (0);
+count = ft_printf("hello %s\n", "dull boy");
+ft_printf("str test: %s\n", "dull boy");
+ft_printf("the test: %d\n", count);
+ft_printf("char test: %c\n", 'd');
+printf("hello %s\n", "dull boy");
+return (0);
 }
+*/

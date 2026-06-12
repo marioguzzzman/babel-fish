@@ -1,7 +1,7 @@
 SHELL = /bin/sh
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -I.
-NAME = ft_printf.a
+NAME = libftprintf.a
 
 SOURCES = ft_printf.c \
 	ft_putchar.c \

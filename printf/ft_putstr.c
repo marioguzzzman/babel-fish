@@ -6,24 +6,29 @@
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/12 22:01:18 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/12 22:11:13 by maguzman         ###   ########.fr       */
+/*   Updated: 2026/06/17 18:14:17 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+//#include "ft_printf.h"
+
+static int	ft_strlen(char *str)
+{
+	int	len;
+
+	len = 0;
+	while (*str)
+		len++;
+	return (len);
+}
 
 int	ft_putstr(char *str)
 {
-	int	count;
+	int	len;
 
-	count = 0;
-	while (*str)
-	{
-		write(1, str, 1);
-		str++;
-		count++;
-	}
-	return (count);
+	len = ft_strlen(str);
+	write(1, str, len);
+	return (len);
 }
 
 int	main(void)

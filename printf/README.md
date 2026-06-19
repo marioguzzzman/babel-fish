@@ -60,7 +60,6 @@ If an output error is encountered, a negative value is returned.
 ## Type promotion
 Automatic conversion of a lower-ranking data type to a higher-ranking data type when an operation involving multiple data types is being performed. For example when an integer and a floar are added, the integer gets promoted to float. Also happends when arguments are passed to functions. 
 
-
 # Instructions
 
 # Resources
@@ -77,4 +76,11 @@ To use write function
 # include <stdlib.h>
 To use malloc and free
 # include <stdarg.h>
+
+### Hepful commands to debug
+
+`cat file       → dump the whole file`
+`head -n 80 file → first 80 lines`
+`sed -n '15,25p' file → arbitrary range`
+
 

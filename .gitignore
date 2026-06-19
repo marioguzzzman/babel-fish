@@ -1,1 +1,23 @@
 CLAUDE.md
+
+# Comments start with #
+
+# Ignore all .o files anywhere in the repo
+*.o
+
+# Ignore all .a files (compiled libraries)
+*.a
+
+# Ignore a specific folder
+printfTester/
+
+# Ignore by name anywhere (no slash = matches anywhere in tree)
+.vscode
+
+# Ignore folders named libftTester anywhere
+libftTester/
+
+# Ignore tester elements
+libft-unit-test/
+libft_tester/
+Supreme-Tester-Libft/

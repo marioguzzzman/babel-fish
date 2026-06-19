@@ -6,24 +6,16 @@
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 16:56:21 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/12 22:18:08 by maguzman         ###   ########.fr       */
+/*   Updated: 2026/06/19 19:04:31 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putnbr(int d, int base)
-{
-	(void)d;
-	(void)base;
-	write(1, "d", 1);
-	return (1);
-}
-
 int	ft_putunsigned(int d, int base)
 {
-	(void)d;
-	(void)base;
+	(void) d;
+	(void) base;
 	write(1, "u", 1);
 	return (1);
 }
@@ -38,7 +30,7 @@ int	ft_selector(char specifier, va_list ap)
 	else if (specifier == 's')
 		count += ft_putstr(va_arg(ap, char *));
 	else if (specifier == 'd')
-		count += ft_putnbr(va_arg(ap, int), 10);
+		count += ft_putnbr(va_arg(ap, int));
 	else if (specifier == 'x')
 		count += ft_putunsigned(va_arg(ap, unsigned int), 16);
 	else
@@ -59,7 +51,6 @@ int	ft_printf(const char *format, ...)
 	{
 		if (*format == '%')
 			count += ft_selector(*(++format), ap);
-		/*ap here is providing a pointer*/
 		else
 			count += write(1, format, 1);
 		++format;

@@ -5,7 +5,8 @@ NAME = libftprintf.a
 
 SOURCES = ft_printf.c \
 	ft_putchar.c \
-	ft_putstr.c
+	ft_putstr.c \
+	ft_putnbr.c
 
 OBJECTS = $(SOURCES:.c=.o)
 

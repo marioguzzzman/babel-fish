@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 16:56:21 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/20 15:21:01 by maguzman         ###   ########.fr       */
+/*   Updated: 2026/06/20 17:48:31 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ int	ft_selector(char specifier, va_list ap)
 	else if (specifier == 'u')
 		count += ft_putunsigned(va_arg(ap, unsigned int));
 	else if (specifier == 'x')
-		count += ft_putunsigned(va_arg(ap, unsigned int));
+		count += ft_puthex(va_arg(ap, unsigned int), specifier);
+	else if (specifier == 'X')
+		count += ft_puthex(va_arg(ap, unsigned int), specifier);
+	else if (specifier == 'p')
+		count += ft_puthex(va_arg(ap, unsigned int));
 	else
 		count += write(1, &specifier, 1);
 	return (count);

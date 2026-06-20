@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunsigned.c                                   :+:      :+:    :+:   */
+/*   ft_puthex.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/19 16:49:22 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/20 17:37:06 by maguzman         ###   ########.fr       */
+/*   Created: 2026/06/20 16:02:43 by maguzman          #+#    #+#             */
+/*   Updated: 2026/06/20 17:45:06 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putunsigned(unsigned int n)
+int	ft_puthex(unsigned int n, char x)
 {
-	char			*map;
 	unsigned int	base;
+	char			*xlowermap;
+	char			*Xuppermap;
 
-	map = "0123456789";
-	base = 10;
-	return (ft_putbase(n, base, map));
+	xlowermap = "0123456789abcdef";
+	Xuppermap = "0123456789ABCDEF";
+	base = 16;
+	if (x == 'x')
+		return (ft_putbase(n, base, xlowermap));
+	else
+		return (ft_putbase(n, base, Xuppermap));
 }

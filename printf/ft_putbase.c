@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putunsigned.c                                   :+:      :+:    :+:   */
+/*   ft_putbase.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/19 16:49:22 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/20 17:37:06 by maguzman         ###   ########.fr       */
+/*   Created: 2026/06/20 16:57:16 by maguzman          #+#    #+#             */
+/*   Updated: 2026/06/20 17:28:15 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_putunsigned(unsigned int n)
+int	ft_putbase(unsigned int n, unsigned int base, char *map)
 {
-	char			*map;
-	unsigned int	base;
+	int			count;
+	long int	ln;
 
-	map = "0123456789";
-	base = 10;
-	return (ft_putbase(n, base, map));
+	count = 0;
+	ln = n;
+	if (ln >= base)
+		count += ft_putbase(ln / base, base, map);
+	count += write(1, &map[ln % base], 1);
+	return (count);
 }

@@ -69,11 +69,12 @@ Useful walkthoight of the logic behind the project
 
 # Notes
 
-# include <stdio.h> 
+### Library reminders
+<stdio.h> 
 To use printf
-# include <unistd.h>
+<unistd.h>
 To use write function 
-# include <stdlib.h>
+<stdlib.h>
 To use malloc and free
 # include <stdarg.h>
 
@@ -83,4 +84,56 @@ To use malloc and free
 `head -n 80 file → first 80 lines`
 `sed -n '15,25p' file → arbitrary range`
 
+### Quick test
+cat << 'EOF' > /tmp/peek.c
+#include <stdio.h>
+#include <limits.h>
+int main(void)
+{
+    /* %u — unsigned decimal */
+    printf("%%u of 0          → [%u]\n", 0);
+    printf("%%u of 42         → [%u]\n", 42);
+    printf("%%u of -1         → [%u]\n", -1);                /* tricky! */
+    printf("%%u of UINT_MAX   → [%u]\n", UINT_MAX);
+
+    /* %x — lowercase hex */
+    printf("%%x of 0          → [%x]\n", 0);
+    printf("%%x of 10         → [%x]\n", 10);
+    printf("%%x of 255        → [%x]\n", 255);
+    printf("%%x of 4096       → [%x]\n", 4096);
+
+    /* %X — uppercase hex */
+    printf("%%X of 255        → [%X]\n", 255);
+    printf("%%X of 4096       → [%X]\n", 4096);
+
+    /* %p — pointer */
+    printf("%%p of NULL       → [%p]\n", (void *)0);
+    printf("%%p of 0x42       → [%p]\n", (void *)0x42);
+    int x = 7;
+    printf("%%p of &x         → [%p]\n", (void *)&x);
+
+    return 0;
+}
+EOF
+cc /tmp/peek.c -o /tmp/peek && /tmp/peek
+
+
+
+
+cat << 'EOF' > /tmp/peek.c
+#include <stdio.h>
+#include <limits.h>
+int main(void)
+{
+    /* %u — unsigned decimal */
+    printf("%%u of -1         → [%u]\n", -1);                /* tricky! */
+        printf("%%u of -10         → [%u]\n", -10);                /* tricky! */
+    printf("%%u of -1000         → [%u]\n", -1000);                /* tricky! */
+
+    printf("%%u of UINT_MAX   → [%u]\n", UINT_MAX);
+
+    return 0;
+}
+EOF
+cc /tmp/peek.c -o /tmp/peek && /tmp/peek
 

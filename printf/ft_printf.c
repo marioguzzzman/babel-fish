@@ -6,19 +6,11 @@
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 16:56:21 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/19 19:37:36 by maguzman         ###   ########.fr       */
+/*   Updated: 2026/06/20 15:21:01 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-int	ft_putunsigned(int d, int base)
-{
-	(void) d;
-	(void) base;
-	write(1, "u", 1);
-	return (1);
-}
 
 int	ft_selector(char specifier, va_list ap)
 {
@@ -31,8 +23,10 @@ int	ft_selector(char specifier, va_list ap)
 		count += ft_putstr(va_arg(ap, char *));
 	else if (specifier == 'd' || specifier == 'i')
 		count += ft_putnbr(va_arg(ap, int));
+	else if (specifier == 'u')
+		count += ft_putunsigned(va_arg(ap, unsigned int));
 	else if (specifier == 'x')
-		count += ft_putunsigned(va_arg(ap, unsigned int), 16);
+		count += ft_putunsigned(va_arg(ap, unsigned int));
 	else
 		count += write(1, &specifier, 1);
 	return (count);

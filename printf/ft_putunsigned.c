@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putunsigned.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/09 17:00:12 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/20 15:19:08 by maguzman         ###   ########.fr       */
+/*   Created: 2026/06/19 16:49:22 by maguzman          #+#    #+#             */
+/*   Updated: 2026/06/20 15:22:57 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int	ft_putunsigned(unsigned int n)
+{
+	long	ln;
+	int		count;
 
-int	ft_printf(const char *format, ...);
-int	ft_putchar(char c);
-int	ft_putstr(char *str);
-int	ft_putnbr(int n);
-int	ft_putunsigned(unsigned int n);
-#endif
+	count = 0;
+	ln = n;
+	if (ln >= 10)
+		count += ft_putunsigned(ln / 10);
+	count += write(1, &"0123456789"[ln % 10], 1);
+	return (count);
+}

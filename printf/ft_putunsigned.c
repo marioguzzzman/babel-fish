@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/19 16:49:22 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/20 17:37:06 by maguzman         ###   ########.fr       */
+/*   Updated: 2026/06/20 18:02:01 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_putunsigned(unsigned int n)
 {
 	char			*map;
-	unsigned int	base;
+	unsigned long	base;
 
 	map = "0123456789";
 	base = 10;

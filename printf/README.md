@@ -62,12 +62,16 @@ Automatic conversion of a lower-ranking data type to a higher-ranking data type 
 
 # Instructions
 
+
+
 # Resources
 
 https://www.youtube.com/watch?v=byRw36Y3Hjs&t=854s
 Useful walkthoight of the logic behind the project
 
 # Notes
+
+AI was used as a socratic teacher reference to understand the project.
 
 ### Library reminders
 <stdio.h> 
@@ -117,23 +121,32 @@ int main(void)
 EOF
 cc /tmp/peek.c -o /tmp/peek && /tmp/peek
 
+# ft_printf - design decisions
 
+## Shared base-conversion core
 
+After implementing `ft_putnbr` (`%d`), `ft_putunsigned` (`%u`), and `ft_puthex` (`%x`/`%X`) independently, the duplication became visible: all three were running the same recursive divide-and-modulo loop, varying only in base and digit alphabet. I extracted `ft_putbase(unsigned long n, unsigned int base, char *digits)` as the shared engine.
 
-cat << 'EOF' > /tmp/peek.c
-#include <stdio.h>
-#include <limits.h>
-int main(void)
-{
-    /* %u — unsigned decimal */
-    printf("%%u of -1         → [%u]\n", -1);                /* tricky! */
-        printf("%%u of -10         → [%u]\n", -10);                /* tricky! */
-    printf("%%u of -1000         → [%u]\n", -1000);                /* tricky! */
+The function knows nothing about which specifier called it. It receives an unsigned magnitude, a base, and a digit map, and returns the count of bytes written. All variation lives at the call site.
 
-    printf("%%u of UINT_MAX   → [%u]\n", UINT_MAX);
+I resisted writing this abstraction earlier. Designing a shared core against two real implementations and one imagined one would have been bases on guessing. After the implementation, the reduncancy became more obvious. instead.
 
-    return 0;
-}
-EOF
-cc /tmp/peek.c -o /tmp/peek && /tmp/peek
+## Sign handling stays in the caller
 
+`ft_putbase` only handles unsigned values. Signed handling, checking for negative, writing `'-'`, casting `INT_MIN` safely via `long` before negating, stays in `ft_putnbr`. After the sign work, `ft_putnbr` hands the unsigned magnitude to `ft_putbase`.
+
+This keeps each function single-responsibility: `ft_putnbr` translates signed-to-unsigned at the boundary; `ft_putbase` does pure digit conversion.
+
+## Type widening for pointers
+
+To support `%p`, `ft_putbase`'s parameter widened from `unsigned int` to `unsigned long`. Pointer values on x86_64 don't fit in 32 bits.
+
+This change was invisible to the existing specifiers: passing an `unsigned int` to a function expecting `unsigned long` triggers C's implicit zero-extension at the call boundary, preserving the numeric value. 
+
+The widening happens once at the function signature, not internally. 
+
+## Digit alphabet as data, not branches
+
+For `%x` vs `%X`, I considered conditional logic ("if uppercase, transform each character") and a second digit-map string. The second map costs one extra constant and removes a branch from every digit write. `ft_putbase` indexes whatever map it's handed — it doesn't know lowercase from uppercase.
+
+This generalizes: any base with any alphabet just becomes a different string passed in. Adding `%b` (binary) would be a two-line wrapper.

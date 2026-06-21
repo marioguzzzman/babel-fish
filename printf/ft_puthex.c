@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/20 16:02:43 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/20 18:06:10 by maguzman         ###   ########.fr       */
+/*   Updated: 2026/06/21 14:04:20 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,6 @@ int	ft_puthex(unsigned int n, char x)
 	unsigned long	base;
 	char			*map;
 
-	map = "0123456789abcdef";
-	map = "0123456789ABCDEF";
 	base = 16;
 	if (x == 'x')
 		map = "0123456789abcdef";

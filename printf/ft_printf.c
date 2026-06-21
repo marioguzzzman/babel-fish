@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 16:56:21 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/20 17:48:31 by maguzman         ###   ########.fr       */
+/*   Updated: 2026/06/21 13:46:08 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,10 @@ int	ft_selector(char specifier, va_list ap)
 		count += ft_putnbr(va_arg(ap, int));
 	else if (specifier == 'u')
 		count += ft_putunsigned(va_arg(ap, unsigned int));
-	else if (specifier == 'x')
-		count += ft_puthex(va_arg(ap, unsigned int), specifier);
-	else if (specifier == 'X')
+	else if (specifier == 'x' || specifier == 'X')
 		count += ft_puthex(va_arg(ap, unsigned int), specifier);
 	else if (specifier == 'p')
-		count += ft_puthex(va_arg(ap, unsigned int));
+		count += ft_putptr(va_arg(ap, void *));
 	else
 		count += write(1, &specifier, 1);
 	return (count);
@@ -38,8 +36,8 @@ int	ft_selector(char specifier, va_list ap)
 
 int	ft_printf(const char *format, ...)
 {
-	va_list ap;
-	int	count;
+	va_list	ap;
+	int		count;
 
 	if (!format)
 		return (-1);
@@ -56,17 +54,3 @@ int	ft_printf(const char *format, ...)
 	va_end(ap);
 	return (count);
 }
-
-/*
-int	main(void)
-{
-int	count;
-
-count = ft_printf("hello %s\n", "dull boy");
-ft_printf("str test: %s\n", "dull boy");
-ft_printf("the test: %d\n", count);
-ft_printf("char test: %c\n", 'd');
-printf("hello %s\n", "dull boy");
-return (0);
-}
-*/

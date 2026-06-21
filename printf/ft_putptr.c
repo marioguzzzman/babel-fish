@@ -1,29 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/09 17:00:12 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/21 13:43:39 by maguzman         ###   ########.fr       */
+/*   Created: 2026/06/20 18:09:21 by maguzman          #+#    #+#             */
+/*   Updated: 2026/06/21 13:38:31 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_PRINTF_H
-# define FT_PRINTF_H
+#include "ft_printf.h"
 
-# include <stdio.h>
-# include <unistd.h>
-# include <stdlib.h>
-# include <stdarg.h>
+int	ft_putptr(void *ptr)
+{
+	unsigned long	addr;
+	char			*map;
+	int				base;
 
-int	ft_printf(const char *format, ...);
-int	ft_putchar(char c);
-int	ft_putstr(char *str);
-int	ft_putnbr(int n);
-int	ft_putunsigned(unsigned int n);
-int	ft_puthex(unsigned int n, char x);
-int	ft_putbase(unsigned long n, unsigned int base, char *map);
-int	ft_putptr(void *ptr);
-#endif
+	base = 16;
+	map = "0123456789abcdef";
+	addr = (unsigned long) ptr;
+	if (ptr == NULL)
+	{
+		write(1, "(nil)", 5);
+		return (5);
+	}
+	else
+		write(1, "0x", 2);
+	return (2 + ft_putbase(addr, base, map));
+}

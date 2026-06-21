@@ -9,7 +9,8 @@ SOURCES = ft_printf.c \
 	ft_putnbr.c \
 	ft_putunsigned.c \
 	ft_puthex.c \
-	ft_putbase.c
+	ft_putbase.c \
+	ft_putptr.c
 
 
 OBJECTS = $(SOURCES:.c=.o)

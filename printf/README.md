@@ -62,7 +62,42 @@ Automatic conversion of a lower-ranking data type to a higher-ranking data type 
 
 # Instructions
 
+Clone the repository and build the library with `make`:
 
+```sh
+git clone <your-repo-url> ft_printf
+cd ft_printf
+make
+```
+
+`make` produces the archive `libftprintf.a` at the root of the repository.
+
+Available Makefile rules:
+
+- `make` / `make all`: compile the sources and build `libftprintf.a`.
+- `make clean`: remove the object (`.o`) files.
+- `make fclean`: remove the object files and `libftprintf.a`.
+- `make re`: run `fclean` then `all` (full rebuild).
+
+To use the library in your own program, include the header and link against
+the archive:
+
+```c
+#include "ft_printf.h"
+
+int main(void)
+{
+    ft_printf("Hello, %s! The answer is %d.\n", "world", 42);
+    return (0);
+}
+```
+
+Then compile your program together with the library:
+
+```sh
+cc main.c -L. -lftprintf -I. -o myprogram
+./myprogram
+```
 
 # Resources
 

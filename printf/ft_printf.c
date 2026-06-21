@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 16:56:21 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/21 14:32:48 by maguzman         ###   ########.fr       */
+/*   Updated: 2026/06/21 14:48:30 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ int	ft_printf(const char *format, ...)
 	while (*format != '\0')
 	{
 		if (*format == '%' && *(format + 1))
-	{
-		format++;
-		count += ft_selector(*format, ap);
-	}
+		{
+			format++;
+			count += ft_selector(*format, ap);
+		}
 		else
-		count += write(1, format, 1);
+			count += write(1, format, 1);
 		format++;
 	}
 	va_end(ap);

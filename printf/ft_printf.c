@@ -6,13 +6,13 @@
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/09 16:56:21 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/21 13:46:08 by maguzman         ###   ########.fr       */
+/*   Updated: 2026/06/21 14:32:48 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_selector(char specifier, va_list ap)
+static int	ft_selector(char specifier, va_list ap)
 {
 	int	count;
 
@@ -45,11 +45,14 @@ int	ft_printf(const char *format, ...)
 	count = 0;
 	while (*format != '\0')
 	{
-		if (*format == '%')
-			count += ft_selector(*(++format), ap);
+		if (*format == '%' && *(format + 1))
+	{
+		format++;
+		count += ft_selector(*format, ap);
+	}
 		else
-			count += write(1, format, 1);
-		++format;
+		count += write(1, format, 1);
+		format++;
 	}
 	va_end(ap);
 	return (count);

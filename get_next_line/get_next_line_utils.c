@@ -1,12 +1,131 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/06/16 11:00:58 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/16 11:01:00 by maguzman         ###   ########.fr       */
+/*                                                       :::      ::::::::    */
+/*   get_next_line_utils.c                             :+:      :+:    :+:    */
+/*                                                   +:+ +:+         +:+      */
+/*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
+/*                                               +#+#+#+#+#+   +#+            */
+/*   Created: 2026/06/16 11:00:58 by maguzman         #+#    #+#              */
+/*   Updated: 2026/06/23 11:22:48 by maguzman        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
+
+/*
+ft_strlen	Calculates string length
+ft_memcpy	Copies memory blocks
+ft_strdup	Duplicates strings
+ft_strchr	Searches for a character inside a string
+ft_strjoin	Concatenates two strings
+*/
+
+static int	ft_strlen(char *str)
+{
+	int	len;
+
+	len = 0;
+	while (*str)
+	{
+		len++;
+		str++;
+	}
+	return (len);
+}
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
+{
+	unsigned char	*s;
+	unsigned char	*d;
+
+	s = (unsigned char *) src;
+	d = (unsigned char *) dest;
+	if (src == NULL || dest == NULL)
+		return (dest);
+	while (n--)
+	{
+		*d = *s;
+		d++;
+		s++;
+	}
+	return (dest);
+}
+
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+{
+	size_t	i;
+	size_t	slen;
+
+	i = 0;
+	slen = ft_strlen(src);
+	if (size == 0)
+		return (slen);
+	while (src[i] != '\0' && i < size - 1)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (slen);
+}
+
+/*
+DESCRIPTION
+It copies a string with a safety guard of taking the full size of the buffer
+and making sure thee is space to NUL-temrinate the result. As long as size > 0.
+Important to make sure NUL is included in size and therefore to have size - 1.
+It operates in true "c" strings, meaning that they only take
+NUL-terminated strings.
+
+RETURN VALUES
+It returns the total length of the string they tried to create.
+*/
+
+char	*ft_strdup(const char *s)
+{
+	char	*ptr;
+	size_t	size;
+
+	size = ft_strlen(s);
+	ptr = malloc(size + 1);
+	if (ptr == NULL)
+		return (NULL);
+	ft_strlcpy(ptr, s, size + 1);
+	return (ptr);
+}
+
+#include "libft.h"
+
+char	*ft_strchr(const char *s, int c)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+	{
+		if (s[i] == (char) c)
+			return ((char *) & s[i]);
+		i++;
+	}
+	if ((char) c == '\0')
+		return ((char *) & s[i]);
+	return (NULL);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	char	*s3;
+	size_t	s1_len;
+	size_t	s2_len;
+
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	s1_len = ft_strlen(s1);
+	s2_len = ft_strlen(s2);
+	s3 = malloc((s1_len + s2_len) + 1);
+	if (s3 == NULL)
+		return (NULL);
+	ft_strlcpy(s3, s1, s1_len + 1);
+	ft_strlcpy(s3 + s1_len, s2, s2_len + 1);
+	return (s3);
+}

@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/06/16 11:00:58 by maguzman         #+#    #+#              */
-/*   Updated: 2026/06/23 11:22:48 by maguzman        ###   ########.fr        */
+/*   Updated: 2026/06/24 13:11:08 by maguzman        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ ft_strchr	Searches for a character inside a string
 ft_strjoin	Concatenates two strings
 */
 
-static int	ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int	len;
 
@@ -33,25 +33,7 @@ static int	ft_strlen(char *str)
 	return (len);
 }
 
-void	*ft_memcpy(void *dest, const void *src, size_t n)
-{
-	unsigned char	*s;
-	unsigned char	*d;
-
-	s = (unsigned char *) src;
-	d = (unsigned char *) dest;
-	if (src == NULL || dest == NULL)
-		return (dest);
-	while (n--)
-	{
-		*d = *s;
-		d++;
-		s++;
-	}
-	return (dest);
-}
-
-size_t	ft_strlcpy(char *dest, const char *src, size_t size)
+size_t	ft_strlcpy(char *dest, char *src, size_t size)
 {
 	size_t	i;
 	size_t	slen;
@@ -93,8 +75,6 @@ char	*ft_strdup(const char *s)
 	ft_strlcpy(ptr, s, size + 1);
 	return (ptr);
 }
-
-#include "libft.h"
 
 char	*ft_strchr(const char *s, int c)
 {

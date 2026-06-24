@@ -124,6 +124,7 @@ To use malloc and free
 `sed -n '15,25p' file → arbitrary range`
 
 ### Quick test
+`
 cat << 'EOF' > /tmp/peek.c
 #include <stdio.h>
 #include <limits.h>
@@ -155,12 +156,13 @@ int main(void)
 }
 EOF
 cc /tmp/peek.c -o /tmp/peek && /tmp/peek
+`
 
 # ft_printf - design decisions
 
-## Shared base-conversion core
+## Shared base-conversion 
 
-After implementing `ft_putnbr` (`%d`), `ft_putunsigned` (`%u`), and `ft_puthex` (`%x`/`%X`) independently, the duplication became visible: all three were running the same recursive divide-and-modulo loop, varying only in base and digit alphabet. I extracted `ft_putbase(unsigned long n, unsigned int base, char *digits)` as the shared engine.
+After implementing `ft_putnbr` (`%d`), `ft_putunsigned` (`%u`), and `ft_puthex` (`%x`/`%X`) are running the same recursive divide-and-modulo loop, varying only in base and digit alphabet. I extracted `ft_putbase(unsigned long n, unsigned int base, char *digits)` as the shared engine.
 
 The function knows nothing about which specifier called it. It receives an unsigned magnitude, a base, and a digit map, and returns the count of bytes written. All variation lives at the call site.
 

@@ -2,26 +2,30 @@
 
 # Description
 
-Write a function that returns a line read from a file descriptor
+Write a function that returns a line read from a file descriptor.
+- Repeated calls (e.g., using a loop) to your get_next_line() function should let you read the text file pointed to by the file descriptor, one line at a time.
+- Make sure that your function works as expected both when reading a file and when reading from the standard input.
 
 Prototype 
 `char *get_next_line(int fd);`
 
-
-- Repeated calls (e.g., using a loop) to your get_next_line() function should let you read the text file pointed to by the file descriptor, one line at a time.
+RETURN
 - Your function should return the line that was read.
-If there is nothing left to read or if an error occurs, it should return NULL.
-- Make sure that your function works as expected both when reading a file and when reading from the standard input.
-- Please note that the returned line should include the terminating \n character, except when the end of the file is reached and the file does not end with a \n character.
+- If there is nothing left to read or if an error occurs, it should return NULL.
+- The returned line should include the terminating \n character, except when the end of the file is reached and the file does not end with a \n character.
+
+UNDEFINED BEHAVIOR
+- get_next_line() exhibits undefined behavior if the file associated with the file descriptor is modified after the last call, while read() has not yet reached the end of the file.
+- get_next_line() also exhibits undefined behavior when reading a binary file. However, you can implement a logical way to handle this behavior if you want to.
+
 - add this option to your compiler call: `-D BUFFER_SIZE=n` It will define the buffer size for read().
 We must be able to compile this project with and without the `-D BUFFER_SIZE` flag in addition to the usual flags. You may choose any default value you prefer.
 - You will compile your code as follows (a buffer size of 42 is used as an example): `cc -Wall -Wextra -Werror -D BUFFER_SIZE=42 <files>.c`
-- get_next_line() exhibits undefined behavior if the file associated with the file descriptor is modified after the last call, while read() has not yet reached the end of the file.
-- get_next_line() also exhibits undefined behavior when reading a binary file. However, you can implement a logical way to handle this behavior if you want to.
+
 -Does your function still work if the BUFFER_SIZE value is 9999? If it is 1? 10000000? Do you know why?
 -Try to read as little as possible each time get_next_line() is called. If you encounter a new line, you have to return the current line.
 
-## Read
+## Read()
 
 The read system call, implemented as the read() function reads the specified amount of bytes cnt of input into the memory area indicated by buf from the file indicated by the file descriptor fd. A successful read() updates the access time for the file. The read() function is also defined inside the <unistd.h> header file.
 Syntax

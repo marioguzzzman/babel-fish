@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
 /*                                               +#+#+#+#+#+   +#+            */
 /*   Created: 2026/06/16 11:00:58 by maguzman         #+#    #+#              */
-/*   Updated: 2026/06/24 13:11:08 by maguzman        ###   ########.fr        */
+/*   Updated: 2026/06/24 13:32:10 by maguzman        ###   ########.fr        */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 /*
 ft_strlen	Calculates string length
-ft_memcpy	Copies memory blocks
 ft_strdup	Duplicates strings
 ft_strchr	Searches for a character inside a string
 ft_strjoin	Concatenates two strings

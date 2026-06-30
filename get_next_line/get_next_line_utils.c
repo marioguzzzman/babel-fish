@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                       :::      ::::::::    */
-/*   get_next_line_utils.c                             :+:      :+:    :+:    */
-/*                                                   +:+ +:+         +:+      */
-/*   By: maguzman <maguzman@student.42.fr>         #+#  +:+       +#+         */
-/*                                               +#+#+#+#+#+   +#+            */
-/*   Created: 2026/06/16 11:00:58 by maguzman         #+#    #+#              */
-/*   Updated: 2026/06/26 13:51:15 by maguzman        ###   ########.fr        */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/06/16 11:00:58 by maguzman          #+#    #+#             */
+/*   Updated: 2026/06/30 12:55:07 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ ft_strchr	Searches for a character inside a string
 ft_strjoin	Concatenates two strings
 */
 
-int	ft_strlen(char *str)
+int	ft_strlen(const char *str)
 {
 	int	len;
 
@@ -32,7 +32,7 @@ int	ft_strlen(char *str)
 	return (len);
 }
 
-size_t	ft_strlcpy(char *dest, char *src, size_t size)
+size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
 	size_t	i;
 	size_t	slen;
@@ -61,19 +61,6 @@ NUL-terminated strings.
 RETURN VALUES
 It returns the total length of the string they tried to create.
 */
-
-char	*ft_strdup(const char *s)
-{
-	char	*ptr;
-	size_t	size;
-
-	size = ft_strlen(s);
-	ptr = malloc(size + 1);
-	if (ptr == NULL)
-		return (NULL);
-	ft_strlcpy(ptr, s, size + 1);
-	return (ptr);
-}
 
 char	*ft_strchr(const char *s, int c)
 {
@@ -107,4 +94,32 @@ char	*ft_strjoin(char const *s1, char const *s2)
 	ft_strlcpy(s3, s1, s1_len + 1);
 	ft_strlcpy(s3 + s1_len, s2, s2_len + 1);
 	return (s3);
+}
+
+char	*ft_substr(char const *s, unsigned int start, size_t len)
+{
+	char	*ptr;
+	size_t	copy_len;
+	size_t	s_len;
+
+	if (s == NULL)
+		return (NULL);
+	s_len = ft_strlen(s);
+	if (start > s_len)
+	{
+		ptr = malloc(1);
+		if (ptr == NULL)
+			return (NULL);
+		ptr[0] = '\0';
+		return (ptr);
+	}
+	if (s_len - start < len)
+		copy_len = s_len - start;
+	else
+		copy_len = len;
+	ptr = malloc(copy_len + 1);
+	if (ptr == NULL)
+		return (NULL);
+	ft_strlcpy(ptr, s + start, copy_len + 1);
+	return (ptr);
 }

@@ -6,16 +6,9 @@
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 10:57:18 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/30 12:49:35 by maguzman         ###   ########.fr       */
+/*   Updated: 2026/06/30 13:29:40 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/* 1. Start with whatever's in static leftover (could be empty, first call)
-2. Loop: read a chunk, append to leftover
-3. Check: does leftover now contain a \n?
-4. If yes → split at \n, return piece 1, save piece 2 as new leftover, stop looping
-5. If no → loop back to step 2 (read more)
-*/
 
 #include "get_next_line.h"
 

@@ -6,7 +6,7 @@
 /*   By: maguzman <maguzman@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/06/23 10:57:18 by maguzman          #+#    #+#             */
-/*   Updated: 2026/06/27 01:46:35 by maguzman         ###   ########.fr       */
+/*   Updated: 2026/06/30 12:49:35 by maguzman         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,10 @@ char	*get_next_line(int fd)
 		return (NULL);
 	b_read = read(fd, buf, BUFFER_SIZE);
 	if (b_read == -1)
+	{
+		left_o = NULL;
 		return (NULL);
+	}
 	if (b_read == 0)
 	{
 		if (left_o == NULL)
@@ -83,32 +86,4 @@ char	*get_next_line(int fd)
 	line = left_o;
 	left_o = NULL;
 	return (line);
-}
-
-char	*ft_substr(char const *s, unsigned int start, size_t len)
-{
-	char	*ptr;
-	size_t	copy_len;
-	size_t	s_len;
-
-	if (s == NULL)
-		return (NULL);
-	s_len = ft_strlen(s);
-	if (start > s_len)
-	{
-		ptr = malloc(1);
-		if (ptr == NULL)
-			return (NULL);
-		ptr[0] = '\0';
-		return (ptr);
-	}
-	if (s_len - start < len)
-		copy_len = s_len - start;
-	else
-		copy_len = len;
-	ptr = malloc(copy_len + 1);
-	if (ptr == NULL)
-		return (NULL);
-	ft_strlcpy(ptr, s + start, copy_len + 1);
-	return (ptr);
 }
